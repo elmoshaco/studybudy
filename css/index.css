@@ -1,0 +1,1253 @@
+/* Variables CSS para temas */
+:root {
+    /* Light Mode */
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --primary-color: #5a7dff; /* Azul vibrante */
+    --primary-dark: #4a6ceb;
+    --border-color: #e0e0e0;
+    --input-bg: #f9f9f9;
+    --input-border: #cccccc;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --hover-bg: #f0f0f0;
+    --nav-active-bg: rgba(90, 125, 255, 0.1); /* Ligero overlay del color primario */
+    --gradient-start: #5a7dff;
+    --gradient-end: #8a6cfa;
+    --profile-card-bg: #e6efff; /* Fondo específico para los datos del perfil en el dropdown */
+
+    /* Specific to cards/sections */
+    --chat-card-bg: linear-gradient(135deg, #a8e063, #56ab2f); /* Verde */
+    --essay-card-bg: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Azul claro */
+    --flashcard-card-bg: linear-gradient(135deg, #fbc2eb, #a6c1ee); /* Rosa/Púrpura */
+    --math-tutor-card-bg: linear-gradient(135deg, #ffc3a0, #ff8c42); /* Naranja/Melocotón */ /* Nuevo */
+}
+
+/* Dark Mode */
+.dark-mode {
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --text-color: #e0e0e0;
+    --text-light: #aaaaaa;
+    --primary-color: #bb86fc; /* Púrpura más suave para dark mode */
+    --primary-dark: #9e7bbd;
+    --border-color: #3f3f50;
+    --input-bg: #2a2a4a;
+    --input-border: #505070;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --hover-bg: #2a2a3e;
+    --nav-active-bg: rgba(187, 134, 252, 0.1); /* Ligero overlay del color primario oscuro */
+    --gradient-start: #2e0e5a;
+    --gradient-end: #1a1a2e;
+    --profile-card-bg: #2a3a5e; /* Fondo específico para los datos del perfil en el dropdown */
+
+    /* Specific to cards/sections in dark mode */
+    --chat-card-bg: linear-gradient(135deg, #4CAF50, #388E3C); /* Verde más oscuro */
+    --essay-card-bg: linear-gradient(135deg, #2196F3, #1976D2); /* Azul más oscuro */
+    --flashcard-card-bg: linear-gradient(135deg, #9C27B0, #7B1FA2); /* Púrpura más oscuro */
+    --math-tutor-card-bg: linear-gradient(135deg, #FF5722, #E64A19); /* Naranja más oscuro */ /* Nuevo */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Auth Pages (Login/Register) --- */
+.auth-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background-image: url('../assets/image_6a7de2.jpg'); /* Fondo para login/registro */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-light);
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.auth-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay oscuro sobre la imagen */
+    color: #ffffff;
+    border-radius: 15px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.auth-card.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+
+.auth-card h2 {
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"],
+.auth-card input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.dark-mode .auth-card input[type="text"],
+.dark-mode .auth-card input[type="password"],
+.dark-mode .auth-card input[type="email"] {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.auth-card input[type="text"]::placeholder,
+.auth-card input[type="password"]::placeholder,
+.auth-card input[type="email"]::placeholder {
+    color: var(--text-light);
+}
+
+.auth-card input[type="text"]:focus,
+.auth-card input[type="password"]:focus,
+.auth-card input[type="email"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(90, 125, 255, 0.3);
+}
+
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-input-wrapper input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.auth-card button[type="submit"],
+.google-login {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.auth-card button[type="submit"] {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.auth-card button[type="submit"]:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.google-login {
+    background-color: #ffffff;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode .google-login {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+
+.google-login img {
+    width: 18px;
+    height: 18px;
+}
+
+.google-login:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.auth-links {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #ffffff;
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* --- Dashboard Layout --- */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-light);
+    overflow: hidden;
+    min-height: 80vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.search-bar-container {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-bar-container input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-bar-container input::placeholder {
+    color: var(--text-light);
+}
+
+.search-bar-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(90, 125, 255, 0.2);
+}
+
+.search-bar-container .fa-search {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-nav li a:hover {
+    color: var(--primary-color);
+    background-color: var(--nav-active-bg);
+}
+
+.main-nav li a.active-nav-link {
+    background-color: var(--nav-active-bg);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+}
+
+/* Profile Dropdown */
+.profile-menu-container {
+    position: relative;
+}
+
+.profile-icon {
+    font-size: 2.2em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-icon:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    width: 250px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    border: 1px solid var(--border-color);
+}
+
+.profile-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.user-info-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+}
+
+.user-info-dropdown .fas.fa-user-circle {
+    font-size: 3em;
+    color: var(--primary-color);
+}
+
+.user-info-dropdown div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-dropdown span {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.user-info-dropdown span:last-child {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.credits-info {
+    padding: 15px; /* Padding para el card de créditos */
+    background-color: var(--profile-card-bg); /* Fondo específico para créditos */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Sutil sombra interna */
+    border: 1px solid var(--border-color);
+}
+
+.credits-info h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.credits-info p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.credits-info p span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.dropdown-link {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-link:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+/* Estilo específico para "Tu cuenta >" en el dropdown */
+.dropdown-link#link-my-account {
+    background-color: var(--profile-card-bg); /* Fondo igual al de créditos */
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color); /* Color de texto del enlace */
+    margin-top: 5px; /* Espacio antes del enlace */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-link#link-my-account:hover {
+    background-color: var(--primary-color); /* Fondo del enlace al pasar el ratón */
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Theme Switcher (Modo Oscuro/Claro) */
+.theme-switcher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.theme-switcher span {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text-light);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* --- Main Content (Sections) --- */
+.content {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.content-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.content-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-section h2,
+.content-section h3,
+.content-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Input Area (Homepage) */
+.input-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.input-area input {
+    flex-grow: 1;
+    padding: 15px 50px 15px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+}
+
+.input-area input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(90, 125, 255, 0.2);
+}
+
+.input-actions {
+    position: absolute;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.input-actions i {
+    font-size: 1.2em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.input-actions i:hover {
+    color: var(--primary-color);
+}
+
+/* Feature Cards (Homepage) */
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.feature-cards .card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-cards .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.feature-cards .card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #ffffff;
+    z-index: 2;
+}
+
+/* Specific card backgrounds with gradients */
+.feature-cards .chat-card {
+    background: var(--chat-card-bg);
+}
+.feature-cards .essay-grader-card {
+    background: var(--essay-card-bg);
+}
+.feature-cards .flashcards-card {
+    background: var(--flashcard-card-bg);
+}
+.feature-cards .math-tutor-card { /* Nuevo estilo para la tarjeta Math Tutor */
+    background: var(--math-tutor-card-bg);
+}
+.math-example { /* Estilo para el contenido de la tarjeta Math Tutor */
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+
+.study-example {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.grade-display {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.grade-display p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 5px;
+}
+
+.grade-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 auto;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.essay-desc {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+}
+
+.flashcards-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flashcards-card p {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+/* --- Chat Interface (Study Chat, Math Tutor) --- */
+.chat-interface, .math-problem-solver {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 280px); /* Ajusta esta altura según tu layout */
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scroll-behavior: smooth;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 15px;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-bottom-right-radius: 5px;
+}
+
+.studyable-message {
+    align-self: flex-start;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-bottom-left-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode .studyable-message {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+/* MathJax specific styles within chat messages */
+.studyable-message .MathJax {
+    font-size: 1.1em;
+}
+.studyable-message ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.studyable-message ul li {
+    margin-bottom: 5px;
+}
+.studyable-message b {
+    color: var(--primary-color);
+}
+
+
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    gap: 10px;
+}
+
+.chat-input-area input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.chat-input-area input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(90, 125, 255, 0.2);
+}
+
+.send-chat-btn {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.send-chat-btn:hover {
+    transform: translateX(5px) scale(1.1);
+}
+
+.recent-essays-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.add-essay-card {
+    background-color: var(--input-bg);
+    border: 2px dashed var(--border-color);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+    height: 150px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-light);
+}
+
+.add-essay-card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.add-essay-card .fas {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.add-essay-card p {
+    font-weight: 500;
+}
+
+/* --- Essay Grader --- */
+.essay-grader-detail {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.essay-grader-detail textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.essay-grader-detail textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(90, 125, 255, 0.2);
+}
+
+.essay-grader-detail .btn-primary {
+    align-self: flex-end;
+    margin-bottom: 30px;
+}
+
+.essay-feedback {
+    background-color: var(--input-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.essay-feedback h4 {
+    margin-top: 0;
+    font-size: 1.3em;
+    color: var(--text-color);
+}
+
+.essay-feedback h4 span {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.feedback-sections {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.marker-notes, .suggestions {
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.marker-notes h5, .suggestions h5 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.marker-notes p {
+    font-size: 0.95em;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.suggestions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions li {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    color: var(--text-color);
+    transition: background-color 0.2s ease;
+}
+
+.suggestions li:last-child {
+    margin-bottom: 0;
+}
+
+.suggestions li:hover {
+    background-color: var(--hover-bg);
+}
+
+/* --- Flashcards --- */
+.flashcard-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    height: 300px;
+}
+
+.flashcard-nav-btn {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.flashcard-nav-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.flashcard-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: all 0.3s ease;
+    perspective: 1000px;
+    color: var(--text-color);
+}
+
+.flashcard-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.flashcard-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.flashcard-controls span {
+    font-size: 1.1em;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.shuffle-flashcards {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.shuffle-flashcards:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* --- My Account Section --- */
+.user-data-display {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    margin-bottom: 30px;
+}
+
+.user-data-display .data-field {
+    margin-bottom: 20px;
+}
+
+.user-data-display label {
+    display: block;
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.user-data-display input[type="text"],
+.user-data-display input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    outline: none;
+    cursor: default;
+}
+
+.user-data-display input:read-only {
+    background-color: var(--hover-bg);
+    opacity: 0.8;
+}
+
+.update-info-text {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.subscription-info {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.subscription-info p {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.subscription-info .btn-primary {
+    margin-left: 20px;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .main-nav ul {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .user-actions {
+        margin-left: unset;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .search-bar-container {
+        order: -1;
+        max-width: 100%;
+    }
+    .feature-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .profile-dropdown {
+        left: unset;
+        right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: 10px;
+    }
+    .auth-card {
+        padding: 25px;
+    }
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar .logo {
+        font-size: 1.5em;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .main-nav li a {
+        padding: 6px 10px;
+    }
+    .content {
+        padding: 20px;
+    }
+    .chat-interface, .math-problem-solver {
+        height: calc(100vh - 250px);
+    }
+    .feedback-sections {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .flashcard-viewer {
+        flex-direction: column;
+    }
+    .flashcard-nav-btn {
+        margin: 10px 0;
+    }
+    .flashcard-content {
+        height: 200px;
+    }
+}
